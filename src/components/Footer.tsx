@@ -9,7 +9,7 @@ export default function Footer() {
                         <Logo className="w-14 h-14" />
                     </div>
                     <p className="text-sm font-medium text-foreground/60">
-                        Expert AI Talent. Anti-Contingency Model.
+                        Expert AI Talent.
                     </p>
                 </div>
 

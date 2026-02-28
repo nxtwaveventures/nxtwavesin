@@ -60,7 +60,7 @@ export default function Image() {
                         lineHeight: 1.4,
                     }}
                 >
-                    Expert AI Talent. Anti-Contingency Model.
+                    Expert AI Talent.
                 </div>
             </div>
         ),
