@@ -5,14 +5,15 @@ import Link from "next/link";
 import { Logo } from "@/components/Logo";
 
 interface PageProps {
-    params: {
+    params: Promise<{
         slug: string;
-    }
+    }>;
 }
 
 // NextJS 14/15 safe param extraction
-export default function InsightPage({ params }: PageProps) {
-    const post = BLOG_POSTS.find((p) => p.slug === params.slug);
+export default async function InsightPage({ params }: PageProps) {
+    const { slug } = await params;
+    const post = BLOG_POSTS.find((p) => p.slug === slug);
 
     if (!post) {
         notFound();
