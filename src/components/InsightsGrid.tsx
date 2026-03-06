@@ -1,69 +1,71 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-const ARTICLES = [
-    {
-        title: "Stop testing. Start vetting.",
-        category: "Evaluation",
-        readTime: "3 min read",
-        color: "from-brand-500 to-cyan-500",
-    },
-    {
-        title: "The million-dollar bad hire.",
-        category: "Economics",
-        readTime: "4 min read",
-        color: "from-blue-500 to-indigo-500",
-    },
-    {
-        title: "Scale with the best.",
-        category: "Strategy",
-        readTime: "5 min read",
-        color: "from-emerald-500 to-teal-500",
-    },
-];
+import { BLOG_POSTS } from "@/data/blogs";
 
 export default function InsightsGrid() {
     return (
-        <section id="blogs" className="py-24 px-6 relative z-10 border-t border-brand-100/50 bg-white/30">
-            <div className="max-w-6xl mx-auto">
+        <section id="blogs" className="py-24 px-6 bg-[#f9fafb] w-full border-t border-gray-200">
+            <div className="max-w-7xl mx-auto">
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="flex flex-col items-center mb-16"
+                    transition={{ duration: 0.6 }}
+                    className="mb-16 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6"
                 >
-                    <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tight text-center leading-tight">
-                        Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">Blogs.</span>
-                    </h2>
+                    <div>
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-3">
+                            Trending <span className="text-[#205081]">Insights.</span>
+                        </h2>
+                        <p className="text-slate-500 font-medium text-lg">Live updates on AI hiring trends & research.</p>
+                    </div>
+                    <button className="text-sm font-bold text-[#205081] hover:text-[#1a416b] flex items-center gap-2 group mx-auto md:mx-0">
+                        View all intelligence
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                    {ARTICLES.map((article, index) => (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {BLOG_POSTS.map((article, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 60 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            whileHover={{ y: -8 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                            className="glass-panel glass-panel-interactive p-6 md:p-8 flex flex-col h-full cursor-pointer group"
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
-                            <div className="mb-8">
-                                <span className="text-xs font-bold text-foreground/50 uppercase tracking-wider block mb-2">
-                                    {article.category}
-                                </span>
-                                <h3 className="text-2xl font-bold text-foreground leading-tight group-hover:text-brand-600 transition-colors">
-                                    {article.title}
-                                </h3>
-                            </div>
+                            <Link
+                                href={`/insights/${article.slug}`}
+                                className="flex flex-col h-full bg-white border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group rounded-sm relative overflow-hidden"
+                            >
+                                {/* Top Accent Line */}
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-[#205081] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                            <div className="mt-auto flex items-center justify-between pt-6 border-t border-brand-200/40">
-                                <span className="text-sm font-medium text-foreground/60">{article.readTime}</span>
-                                <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${article.color} flex items-center justify-center opacity-80 group-hover:scale-110 transition-transform`}>
+                                <div className="p-8 md:p-10 flex flex-col flex-grow">
+                                    <div className="flex items-center gap-2 mb-4">
+                                        <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                                        <span className="text-[11px] font-bold tracking-widest text-[#205081] uppercase">
+                                            {article.category}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-slate-900 leading-snug mb-8 group-hover:text-[#205081] transition-colors">
+                                        {article.title}
+                                    </h3>
+
+                                    <div className="mt-auto pt-6 flex items-center justify-between border-t border-gray-100">
+                                        <span className="text-[11px] font-semibold text-slate-500 tracking-wider uppercase">
+                                            {article.readTime}
+                                        </span>
+                                        <span className="text-[#205081] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                            <ArrowRight className="w-5 h-5" />
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>

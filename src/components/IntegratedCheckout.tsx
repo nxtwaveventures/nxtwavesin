@@ -39,39 +39,37 @@ Company: ${formData.company}
     };
 
     return (
-        <section id="checkout" className="py-24 px-6 relative z-10 w-full flex justify-center">
-            <div className="absolute inset-0 bg-gradient-to-t from-emerald-100/40 to-transparent pointer-events-none" />
-
+        <section id="checkout" className="py-24 px-6 relative z-10 w-full flex justify-center bg-[#f9fafb] border-t border-gray-200">
             <div className="max-w-3xl w-full">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-black text-foreground tracking-tight">
-                        Hire <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">Us.</span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
+                        Hire <span className="text-[#205081]">Us.</span>
                     </h2>
-                    <p className="mt-4 text-foreground/70 text-lg font-medium">
+                    <p className="mt-4 text-slate-500 text-lg font-medium">
                         Provide your 4 details to unlock via WhatsApp.
                     </p>
                 </div>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
-                    className="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden shadow-2xl shadow-emerald-500/10"
+                    transition={{ duration: 0.6 }}
+                    className="bg-white p-8 md:p-12 rounded-sm relative overflow-hidden border border-gray-200 shadow-xl"
                 >
-                    {/* Subtle bg flair */}
-                    <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-400" />
+                    {/* Top accent line matching the cards */}
+                    <div className="absolute top-0 left-0 w-full h-[4px] bg-[#205081]" />
 
-                    <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
+                    <form className="space-y-6 relative z-10 pt-2" onSubmit={handleSubmit}>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-bold text-foreground/80">Service Required</label>
+                            <label className="text-sm font-bold text-slate-700 uppercase tracking-wider text-[11px]">Service Required</label>
                             <select
                                 name="service"
                                 required
                                 value={formData.service}
                                 onChange={handleChange}
-                                className="w-full bg-white/60 border border-emerald-200/60 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all font-medium appearance-none"
+                                className="w-full bg-white border border-gray-300 rounded-sm px-4 py-3 outline-none focus:border-[#205081] focus:ring-1 focus:ring-[#205081] transition-all font-medium text-slate-900 appearance-none h-[50px]"
                             >
                                 <option value="" disabled>Select Service...</option>
                                 <option value="AI Hire">AI Hire</option>
@@ -80,7 +78,7 @@ Company: ${formData.company}
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-bold text-foreground/80">Recruiter Name</label>
+                            <label className="text-sm font-bold text-slate-700 uppercase tracking-wider text-[11px]">Recruiter Name</label>
                             <input
                                 name="name"
                                 type="text"
@@ -88,12 +86,12 @@ Company: ${formData.company}
                                 value={formData.name}
                                 onChange={handleChange}
                                 placeholder="E.g. Sarah Connor"
-                                className="w-full bg-white/60 border border-emerald-200/60 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all font-medium"
+                                className="w-full bg-white border border-gray-300 rounded-sm px-4 py-3 outline-none focus:border-[#205081] focus:ring-1 focus:ring-[#205081] transition-all font-medium text-slate-900 h-[50px] placeholder:text-gray-400"
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-bold text-foreground/80">Work Email</label>
+                            <label className="text-sm font-bold text-slate-700 uppercase tracking-wider text-[11px]">Work Email</label>
                             <input
                                 name="email"
                                 type="email"
@@ -101,12 +99,12 @@ Company: ${formData.company}
                                 value={formData.email}
                                 onChange={handleChange}
                                 placeholder="sarah@enterprise.com"
-                                className="w-full bg-white/60 border border-emerald-200/60 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all font-medium"
+                                className="w-full bg-white border border-gray-300 rounded-sm px-4 py-3 outline-none focus:border-[#205081] focus:ring-1 focus:ring-[#205081] transition-all font-medium text-slate-900 h-[50px] placeholder:text-gray-400"
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-bold text-foreground/80">Company Details / Name</label>
+                            <label className="text-sm font-bold text-slate-700 uppercase tracking-wider text-[11px]">Company Details / Name</label>
                             <input
                                 name="company"
                                 type="text"
@@ -114,18 +112,18 @@ Company: ${formData.company}
                                 value={formData.company}
                                 onChange={handleChange}
                                 placeholder="Enterprise AI Labs"
-                                className="w-full bg-white/60 border border-emerald-200/60 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all font-medium"
+                                className="w-full bg-white border border-gray-300 rounded-sm px-4 py-3 outline-none focus:border-[#205081] focus:ring-1 focus:ring-[#205081] transition-all font-medium text-slate-900 h-[50px] placeholder:text-gray-400"
                             />
                         </div>
 
                         {/* Submit Button */}
-                        <div className="pt-6 flex flex-col items-center">
+                        <div className="pt-8 flex flex-col items-center">
                             <button
                                 type="submit"
                                 disabled={!isFormValid}
-                                className={`w-full px-12 py-4 rounded-full text-lg font-bold items-center justify-center gap-3 flex transition-all ${isFormValid
-                                    ? "bg-[#25D366] border border-[#25D366] text-white hover:scale-105 hover:bg-[#1DA851] hover:shadow-[0_0_20px_rgba(37,211,102,0.4)] cursor-pointer"
-                                    : "bg-gray-300 border border-gray-300 text-gray-500 cursor-not-allowed opacity-70"
+                                className={`w-full px-12 py-4 rounded-sm text-lg font-bold items-center justify-center gap-3 flex transition-all ${isFormValid
+                                    ? "bg-[#25D366] text-white hover:-translate-y-1 hover:shadow-lg cursor-pointer"
+                                    : "bg-gray-100 border border-gray-200 text-gray-400 cursor-not-allowed"
                                     }`}
                             >
                                 {/* WhatsApp Icon */}

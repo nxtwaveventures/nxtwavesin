@@ -1,67 +1,85 @@
 "use client";
 
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
-
-// SSR disabled — Framer Motion animated SVG paths cause hydration mismatches when server-rendered
-const NeuralBackground = dynamic(() => import("./NeuralBackground"), { ssr: false });
+import Image from "next/image";
 
 export default function Hero() {
     return (
-        <section className="relative min-h-[95vh] flex flex-col items-center justify-center px-6 pt-20 pb-16 overflow-hidden">
-            <NeuralBackground />
+        <section className="relative min-h-[90vh] flex flex-col justify-center px-6 pt-24 pb-16 bg-[#f9fafb] overflow-hidden">
+            <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center z-10">
 
-            <motion.div
-                initial={{ opacity: 0, scale: 0.85, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="max-w-5xl mx-auto text-center z-10"
-            >
-
-                <motion.h1
-                    initial={{ opacity: 0, y: 60 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[1.05] mb-8"
-                >
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">
-                        AI Talent.
-                    </span> <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-brand-500 to-cyan-400">
-                        Hire Or Vett.
-                    </span>
-                </motion.h1>
-
+                {/* Left Side: Copy & CTA */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-xl md:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed mb-12 font-medium"
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex flex-col items-center lg:items-start text-center lg:text-left"
                 >
-                    <p className="mb-2 text-foreground/90 font-semibold tracking-tight">
-                        Powering Enterprise GCCs/Startups with the best human minds in AI.
-                    </p>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
-                >
-                    <button
-                        onClick={() => {
-                            document.getElementById("checkout")?.scrollIntoView({ behavior: "smooth" });
-                        }}
-                        className="glass-button w-full sm:w-auto px-10 py-5 rounded-full text-lg font-bold flex items-center justify-center gap-3 hover:scale-105 transition-transform duration-300 shadow-xl"
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                        className="inline-block px-4 py-1.5 rounded-full bg-[#e8f0fe] text-[#205081] text-xs font-bold tracking-widest uppercase mb-8 border border-[#c2d7f5]"
                     >
-                        <span>Hire Us</span>
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </button>
+                        Elite Tech Talent
+                    </motion.div>
+
+                    <motion.h1
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-[1.05] mb-6"
+                    >
+                        Hire Or Vett Top <br className="hidden lg:block" />
+                        <span className="text-[#205081]">AI Talent.</span>
+                    </motion.h1>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-xl md:text-2xl text-slate-600 max-w-xl leading-relaxed mb-10 font-medium"
+                    >
+                        We hire or vet your highest paying technology employees for technical skills and cultural fit. Zero false positives.
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
+                    >
+                        <button
+                            onClick={() => {
+                                document.getElementById("checkout")?.scrollIntoView({ behavior: "smooth" });
+                            }}
+                            className="bg-[#205081] text-white w-full sm:w-auto px-10 py-4 rounded-sm text-lg font-semibold hover:bg-[#1a416b] hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                        >
+                            Hire Us Now
+                        </button>
+                    </motion.div>
                 </motion.div>
-            </motion.div>
+
+                {/* Right Side: Image */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95, x: 30 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative w-full aspect-[4/3] lg:aspect-square max-w-2xl mx-auto lg:mr-0"
+                >
+                    <div className="absolute inset-0 bg-[#205081]/5 translate-x-4 translate-y-4 rounded-sm -z-10"></div>
+                    <div className="relative w-full h-full rounded-sm overflow-hidden shadow-2xl border border-gray-200">
+                        <Image
+                            src="/hero-image-v5.png"
+                            alt="Elite Indian woman software engineer focused on screen"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
+                </motion.div>
+
+            </div>
         </section>
     );
 }
